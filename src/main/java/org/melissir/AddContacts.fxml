@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.melissir.AddContactsController">
+<GridPane fx:id="top" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.melissir.AddContactsController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="193.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="387.0" />
@@ -30,7 +30,7 @@
     <children>
         <Label alignment="CENTER" text="Add Contact" GridPane.rowIndex="1">
             <font>
-                <Font name="System Bold" size="26.0" />
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <Label text="First Name" GridPane.rowIndex="2" />
@@ -40,21 +40,21 @@
         <Label text="Zip" GridPane.rowIndex="6" />
         <Label text="E-mail" GridPane.rowIndex="7" />
         <Label text="Phone #:" GridPane.rowIndex="8" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextField fx:id="firstField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="lastField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="stateField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="zipField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
             <children>
-                <Button mnemonicParsing="false" text="Add">
+                <Button mnemonicParsing="false" onAction="#add" text="Add">
                     <HBox.margin>
                         <Insets right="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" text="Cancel" />
+                <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" />
             </children>
         </HBox>
     </children>
