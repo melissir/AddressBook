@@ -65,7 +65,7 @@ public class AddressController implements Initializable {
                 throw new ExpectedException("must select contact");
             }
 
-            URL fxml = getClass().getResource("ModifyContactDialog.fxml");
+            URL fxml = getClass().getResource("ModifyContact.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxml);
             fxmlLoader.load();
             ModifyContactController dialogController = fxmlLoader.getController();
@@ -76,12 +76,15 @@ public class AddressController implements Initializable {
             dialogStage.initModality(Modality.APPLICATION_MODAL);
             dialogController.mainController = this;
             dialogStage.show();
-
-//            dialogController.studentLabel.setText(student.getName());
-//            dialogController.tutorLabel.setText(tutor.getName());
-//            dialogController.reportField.setText(interact.getReport().trim());
-//            dialogController.interactToModify = interact;
             dialogController.contact = contact;
+            dialogController.firstField.setText(contact.getFirst());
+            dialogController.lastField.setText(contact.getLast());
+            dialogController.streetField.setText(contact.getStreet());
+            dialogController.stateField.setText(contact.getState());
+            dialogController.zipField.setText(contact.getZip());
+            dialogController.emailField.setText(contact.getEmail());
+            dialogController.phoneField.setText(contact.getPhone());
+
 
 
         }catch(ExpectedException ex){
@@ -94,25 +97,25 @@ public class AddressController implements Initializable {
         }
     }
 
-//    @FXML
-//    void addStudent(Event event){
-//        try{
-//            URL fxml = getClass().getResource("addStudentDialog.fxml");
-//            FXMLLoader fxmlLoader = new FXMLLoader(fxml);
-//            fxmlLoader.load();
-//            AddStudentDialogController dialogController = fxmlLoader.getController();
-//            Scene scene = new Scene(fxmlLoader.getRoot());
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Add Student");
-//            dialogStage.setScene(scene);
-//            dialogStage.initModality(Modality.APPLICATION_MODAL);
-//            dialogController.mainController = this;
-//            dialogStage.show();
-//        }catch(Exception ex){
-//            ex.printStackTrace(System.err);
-//            System.exit(1);
-//        }
-//    }
+    @FXML
+    void addContacts(Event event){
+        try {
+            URL fxml = getClass().getResource("ModifyContact.fxml");
+            FXMLLoader fxmlLoader = new FXMLLoader(fxml);
+            fxmlLoader.load();
+            ModifyContactController dialogController = fxmlLoader.getController();
+            Scene scene = new Scene(fxmlLoader.getRoot());
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Add Contact");
+            dialogStage.setScene(scene);
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            dialogController.mainController = this;
+            dialogStage.show();
+        }catch (Exception ex){
+        ex.printStackTrace(System.err);
+        System.exit(1);
+    }
+    }
 
 
 

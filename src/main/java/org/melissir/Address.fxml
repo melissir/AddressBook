@@ -15,8 +15,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Actions">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Edit Contact" />
-              <MenuItem mnemonicParsing="false" text="Add Contact" />
+                  <MenuItem mnemonicParsing="false" onAction="#modifyContact" text="Modify Contact" />
+              <MenuItem mnemonicParsing="false" onAction="#addContacts" text="Add Contact" />
             </items>
           </Menu>
         </menus>

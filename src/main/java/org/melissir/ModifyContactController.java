@@ -53,13 +53,7 @@ public class ModifyContactController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        firstField.setText(contact.getFirst());
-        lastField.setText(contact.getLast());
-        streetField.setText(contact.getStreet());
-        stateField.setText(contact.getState());
-        zipField.setText(contact.getZip());
-        emailField.setText(contact.getEmail());
-        phoneField.setText(contact.getPhone());
+
 
     }
 
@@ -85,6 +79,11 @@ public class ModifyContactController implements Initializable {
 
             ListView<Contacts> contactlist = mainController.contactslist;
             TextArea display = mainController.display;
+            contactlist.getSelectionModel().clearSelection();
+            mainController.userContactsIds.clear();
+            contactlist.refresh();
+            contactlist.getSelectionModel().select(contact);
+            contactlist.scrollTo(contact);
             display.setText(AddressController.contactInfo(contact));
         }catch(Exception ex){
             ex.printStackTrace(System.err);
