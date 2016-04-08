@@ -100,10 +100,10 @@ public class AddressController implements Initializable {
     @FXML
     void addContacts(Event event){
         try {
-            URL fxml = getClass().getResource("ModifyContact.fxml");
+            URL fxml = getClass().getResource("AddContacts.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(fxml);
             fxmlLoader.load();
-            ModifyContactController dialogController = fxmlLoader.getController();
+            AddContactsController dialogController = fxmlLoader.getController();
             Scene scene = new Scene(fxmlLoader.getRoot());
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Add Contact");

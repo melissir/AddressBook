@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 /**
@@ -76,6 +77,11 @@ public class AddContactsController implements Initializable {
 
             ListView<Contacts> contactlist = mainController.contactslist;
             TextArea display = mainController.display;
+            contactlist.getItems().clear();
+            Collection<Contacts> contacts = ORM.findAll(Contacts.class);
+            for (Contacts thisContact : contacts) {
+                contactlist.getItems().add(thisContact);
+            }
             contactlist.getSelectionModel().clearSelection();
             mainController.userContactsIds.clear();
             contactlist.refresh();
