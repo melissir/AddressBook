@@ -23,16 +23,16 @@
       </MenuBar>
    </top>
    <center>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.4297658862876254" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="207.0">
                <children>
-                  <ListView layoutX="-13.0" layoutY="6.0" prefHeight="361.0" prefWidth="200.0" />
+                  <ListView fx:id="contactslist" layoutX="5.0" layoutY="6.0" onMouseClicked="#contactSelect" prefHeight="361.0" prefWidth="241.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="395.0">
                <children>
-                  <TextArea layoutX="2.0" layoutY="2.0" prefHeight="361.0" prefWidth="407.0" />
+                  <TextArea fx:id="display" layoutY="4.0" prefHeight="361.0" prefWidth="328.0" />
                </children>
             </AnchorPane>
         </items>

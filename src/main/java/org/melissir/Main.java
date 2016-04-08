@@ -19,9 +19,6 @@ public class Main extends Application {
 
         stage.setScene(scene);
 
-        // lines added:
-        stage.setWidth(700);
-        stage.setHeight(500);
         stage.setTitle("Address Book");
 
         stage.show();

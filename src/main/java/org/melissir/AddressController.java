@@ -1,5 +1,6 @@
 package org.melissir;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -41,6 +42,29 @@ public class AddressController implements Initializable {
             System.exit(1);
         }
 
+    }
+
+    @FXML
+    void contactSelect(Event event){
+        Contacts contact = contactslist.getSelectionModel().getSelectedItem();
+        display.setText(contactInfo(contact));
+    }
+
+    static String contactInfo(Contacts contact){
+        return String.format(
+                        "name: %s %s\n"
+                        + "email: %s\n"
+                        + "address: %s %s %s\n"
+                        + "phone number: %s\n",
+                contact.getFirst(),
+                contact.getLast(),
+                contact.getEmail(),
+                contact.getStreet(),
+                contact.getState(),
+                contact.getZip(),
+                contact.getPhone()
+
+        );
     }
 }
 

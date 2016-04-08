@@ -23,7 +23,7 @@ public class ContactsCellCallback implements Callback<ListView<Contacts>, ListCe
                     this.setText(null);
                     return;
                 }
-                this.setText(contact.getLast() + ", " + contact.getLast());
+                this.setText(contact.getLast() + ", " + contact.getFirst());
 
                 String css = "-fx-text-fill:#606; -fx-font-weight:bold;";
                 if (contactsIds.contains(contact.getId())) {
