@@ -28,7 +28,6 @@ public class ORM {
             throw new SQLException("ORM not initialized");
         }
         if (cx == null || cx.isClosed()) {
-            //System.out.println("new connection");
             cx = DriverManager.getConnection(url, username, password);
         }
         return cx;

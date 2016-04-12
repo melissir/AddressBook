@@ -16,7 +16,7 @@ public class Setup {
     public static void main(String[] args) {
         Connection conn = null;
         Statement stmt = null;
-        try{
+        try {
             //Open a connection
             System.out.println("Connecting to a selected database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -44,26 +44,27 @@ public class Setup {
 
             stmt.executeUpdate(sql);
             System.out.println("Created table in given database...");
-        }catch(SQLException se){
+        } catch (SQLException se) {
             //Handle errors for JDBC
             se.printStackTrace();
-        }catch(Exception e){
+        } catch (Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
-        }finally{
+        } finally {
             //finally block used to close resources
-            try{
-                if(stmt!=null)
+            try {
+                if (stmt != null)
                     conn.close();
-            }catch(SQLException se){
+            } catch (SQLException se) {
             }// do nothing
-            try{
-                if(conn!=null)
+            try {
+                if (conn != null)
                     conn.close();
-            }catch(SQLException se){
+            } catch (SQLException se) {
                 se.printStackTrace();
             }//end finally try
         }//end try
         System.out.println("Goodbye!");
-    }//end main
-}//end JDBCExample
+    }
+
+}
