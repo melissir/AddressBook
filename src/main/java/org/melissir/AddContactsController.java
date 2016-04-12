@@ -4,9 +4,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.net.URL;
 import java.util.Collection;
@@ -55,8 +57,8 @@ public class AddContactsController implements Initializable {
     }
 
     @FXML
-    void add(Event event){
-        try{
+    void add(Event event) {
+        try {
             String first = firstField.getText().trim();
             String last = lastField.getText().trim();
             String street = streetField.getText().trim();
@@ -64,6 +66,11 @@ public class AddContactsController implements Initializable {
             String zip = zipField.getText().trim();
             String email = emailField.getText().trim();
             String phone = phoneField.getText().trim();
+
+            EmailValidator validator = EmailValidator.getInstance();
+            if (!validator.isValid(email)) {
+                throw new ExpectedException("e-mail address is not valid");
+            }
 
             Contacts contact = new Contacts();
             contact.setFirst(first);
@@ -88,12 +95,17 @@ public class AddContactsController implements Initializable {
             contactlist.getSelectionModel().select(contact);
             contactlist.scrollTo(contact);
             display.setText(AddressController.contactInfo(contact));
+
+            top.getScene().getWindow().hide();
+        }catch(ExpectedException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(ex.getMessage());
+            alert.show();
         }catch(Exception ex){
             ex.printStackTrace(System.err);
             System.exit(1);
         }
 
-        top.getScene().getWindow().hide();
     }
 
     @FXML

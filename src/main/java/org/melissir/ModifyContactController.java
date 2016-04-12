@@ -4,9 +4,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.apache.commons.validator.routines.EmailValidator;
 
 
 import java.net.URL;
@@ -68,6 +70,11 @@ public class ModifyContactController implements Initializable {
             String email = emailField.getText().trim();
             String phone = phoneField.getText().trim();
 
+            EmailValidator validator = EmailValidator.getInstance();
+            if (!validator.isValid(email)) {
+                throw new ExpectedException("e-mail address is not valid");
+            }
+
             contact.setFirst(first);
             contact.setLast(last);
             contact.setStreet(street);
@@ -85,12 +92,17 @@ public class ModifyContactController implements Initializable {
             contactlist.getSelectionModel().select(contact);
             contactlist.scrollTo(contact);
             display.setText(AddressController.contactInfo(contact));
+
+            top.getScene().getWindow().hide();
+        }catch(ExpectedException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(ex.getMessage());
+            alert.show();
         }catch(Exception ex){
             ex.printStackTrace(System.err);
             System.exit(1);
         }
 
-        top.getScene().getWindow().hide();
     }
 
     @FXML
